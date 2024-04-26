@@ -10,10 +10,20 @@ body {
 }
 
 .img-container {
+  margin: 1rem;
   display: flex;
   flex-wrap: wrap;
-
+  gap: 0.8rem;
   img {
     height: 40vh;
+    flex: 1;
+    object-fit: cover;
+    object-position: center;
+    transition: all 100ms ease-in;
+    &:hover {
+      filter: brightness(1.1);
+      transform: scale(101%);
+      cursor: pointer;
+    }
   }
 }
