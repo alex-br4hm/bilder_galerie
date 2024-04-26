@@ -27,3 +27,59 @@ body {
     }
   }
 }
+
+.full-size-img-container {
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 50vw;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.full-size-btn-container {
+  height: 100vh;
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  .x-btn {
+    font-size: 5rem;
+    position: absolute;
+    left: 3%;
+    top: 3%;
+  }
+  .arrow {
+    font-size: 8rem;
+    position: absolute;
+  }
+
+  .left-arrow {
+    bottom: 50%;
+    left: 10%;
+  }
+
+  .right-arrow {
+    bottom: 50%;
+    right: 10%;
+  }
+}
+
+.d-none {
+  display: none;
+}
