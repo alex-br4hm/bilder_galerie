@@ -8,3 +8,12 @@ body {
   color: antiquewhite;
   font-family: sans-serif;
 }
+
+.img-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  img {
+    height: 40vh;
+  }
+}
