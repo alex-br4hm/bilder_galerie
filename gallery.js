@@ -1,5 +1,6 @@
 const imgContainer = document.getElementById("imgContainer");
 const fullSizeImgContainer = document.getElementById("fullSizeImgContainer");
+const slideShowImgContainer = document.getElementById("slideShowImgContainer");
 let animalImages = [];
 buildAnimalImagesArray();
 console.table(animalImages);
@@ -46,6 +47,32 @@ function fullSizeImgToLeft(i) {
   }
 }
 
+function startSlideShow(i) {
+  slideShowImgContainer.classList.remove("d-none");
+  fullSizeImgContainer.classList.add("d-none");
+  slideShowRunning(i);
+}
+
+function slideShowRunning(i) {
+  if (i < animalImages.length) {
+    slideShowImgContainer.innerHTML = `
+      <img onclick="stopSlideShow(${i})" src="${animalImages[i]}" alt="" /> 
+    `;
+    setTimeout(() => {
+      slideShowRunning(i + 1);
+    }, 3000);
+  }
+}
+
+function stopSlideShow(i) {
+  slideShowImgContainer.classList.add("d-none");
+  fullSizeImgContainer.classList.remove("d-none");
+  if (i) {
+    openFullSizeImgHTML(i);
+  } else {
+    loadImages();
+  }
+}
 // +++ HTML +++ //
 
 function openFullSizeImgHTML(i) {
@@ -57,7 +84,8 @@ function openFullSizeImgHTML(i) {
               })"class="arrow left-arrow btn-hover">&laquo;</div>
               <div onclick="fullSizeImgToRight(${
                 i + 1
-              })" class="arrow right-arrow btn-hover" id="rightArrow"">&raquo;</div>
+              })" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
+              <div onclick="startSlideShow(${i})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
         </div>
             <img onclick="closeFullSizeImg()" src="${animalImages[i]}" alt="" />
   `;
@@ -74,6 +102,7 @@ function fullSizeImgToRightHTML(i) {
           <div onclick="fullSizeImgToRight(${
             i + 1
           })" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
+          <div onclick="startSlideShow(${i})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
     </div>
         <img onclick="closeFullSizeImg()" src="${animalImages[i]}" alt="" />
 `;
@@ -90,6 +119,7 @@ function fullSizeImgToLeftHTML(i) {
           <div onclick="fullSizeImgToRight(${
             i + 1
           })" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
+          <div onclick="startSlideShow(${i})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
     </div>
           <img onclick="closeFullSizeImg()" src="${animalImages[i]}" alt="" />
           `;
