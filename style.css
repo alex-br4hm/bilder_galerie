@@ -9,8 +9,23 @@ body {
   font-family: sans-serif;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  margin: 0 1rem;
+  h1 {
+    padding-left: 3vw;
+    font-size: 3rem;
+    background-image: url("./src/img/img10.jpg");
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.384);
+    background-size: 50%;
+  }
+}
+
 .img-container {
-  margin: 1rem;
+  margin: 1rem 1rem 0 1rem;
+  padding-bottom: 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
@@ -45,6 +60,7 @@ body {
     width: 50vw;
     height: 100%;
     object-fit: cover;
+    z-index: 1001;
   }
 }
 
@@ -63,10 +79,12 @@ body {
     position: absolute;
     left: 3%;
     top: 3%;
+    user-select: none;
   }
   .arrow {
     font-size: 8rem;
     position: absolute;
+    user-select: none;
   }
 
   .left-arrow {
@@ -77,6 +95,16 @@ body {
   .right-arrow {
     bottom: 50%;
     right: 10%;
+  }
+
+  .btn-hover {
+    transition: all 100ms ease-in;
+
+    &:hover {
+      cursor: pointer;
+      color: white;
+      transform: scale(96%);
+    }
   }
 }
 
