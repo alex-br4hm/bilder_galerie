@@ -9,8 +9,17 @@
   <body>
     <header>
       <h1>images.</h1>
+      <div class="header-link-container">
+        <div class="animal-img-btn active-link" id="animalImgBtn">animals</div>
+        <div class="plants-img-btn" id="plantsImgBtn">plants</div>
+        <div class="rocks-img-btn" id="rocksImgBtn">rocks</div>
+      </div>
     </header>
     <div class="full-size-img-container d-none" id="fullSizeImgContainer"></div>
+    <div
+      class="slide-show-img-container d-none"
+      id="slideShowImgContainer"
+      onclick="stopSlideShow()"></div>
     <div class="img-container" id="imgContainer"></div>
     <script src="gallery.js"></script>
   </body>
