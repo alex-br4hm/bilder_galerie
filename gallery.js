@@ -1,9 +1,14 @@
 const imgContainer = document.getElementById("imgContainer");
 const fullSizeImgContainer = document.getElementById("fullSizeImgContainer");
 const slideShowImgContainer = document.getElementById("slideShowImgContainer");
+const animalImgBtn = document.getElementById("animalImgBtn");
+const plantsImgBtn = document.getElementById("plantsImgBtn");
+const rocksImgBtn = document.getElementById("rocksImgBtn");
+
 let animalImages = [];
+let plantsImages = [];
+let stoneImages = [];
 buildAnimalImagesArray();
-console.table(animalImages);
 
 function buildAnimalImagesArray() {
   for (let i = 0; i < 21; i++) {
@@ -70,6 +75,7 @@ function stopSlideShow(i) {
   if (i) {
     openFullSizeImgHTML(i);
   } else {
+    imgContainer.innerHTML = "";
     loadImages();
   }
 }
