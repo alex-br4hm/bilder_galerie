@@ -13,7 +13,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 2rem 1rem;
+  padding: 2rem 1rem;
   h1 {
     margin: 0;
     padding-left: 3vw;
@@ -22,6 +22,7 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgba(255, 255, 255, 0.384);
     background-size: 50%;
+    user-select: none;
   }
   .header-link-container {
     display: flex;
