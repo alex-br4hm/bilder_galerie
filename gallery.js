@@ -12,7 +12,7 @@ buildAnimalImagesArray();
 
 function buildAnimalImagesArray() {
   for (let i = 0; i < 21; i++) {
-    animalImages.push(`./src/img/img${i}.jpg`);
+    animalImages.push(`./src/img/animals/animal${i}.jpg`);
   }
   loadImages();
 }
@@ -20,7 +20,7 @@ function buildAnimalImagesArray() {
 function loadImages() {
   for (let i = 0; i < animalImages.length; i++) {
     imgContainer.innerHTML += `
-        <img onclick="openFullSizeImg(${i})"src="${animalImages[i]}" alt="Image from a animal" id="img${i}" />
+        <img loading="lazy" onclick="openFullSizeImg(${i})"src="${animalImages[i]}" alt="Image from a animal" id="img${i}" />
         `;
   }
 }

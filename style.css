@@ -30,7 +30,7 @@ header {
     gap: 2rem;
     font-size: 2rem;
 
-    div {
+    a {
       transition: all 100ms ease-in;
       background-image: url("./src/img/img9.jpg");
       -webkit-background-clip: text;
