@@ -71,6 +71,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
+
   img {
     height: 40vh;
     flex: 1;
