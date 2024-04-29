@@ -10,25 +10,29 @@
     <header>
       <h1>images.</h1>
       <div class="header-link-container">
-        <a
-          class="animal-img-btn active-link"
-          onclick="loadAnimalImages()"
-          id="animalImgBtn"
-          >animals</a
-        >
-        <a class="plants-img-btn" onclick="loadPlantsImages()" id="plantsImgBtn"
-          >plants</a
-        >
-        <a class="rocks-img-btn" onclick="loadRocksImages()" id="rocksImgBtn"
-          >rocks</a
-        >
+        <a class="animal-img-btn active-link" onclick="loadAnimalImages()" id="animalImgBtn">animals</a>
+        <a class="plants-img-btn" onclick="loadPlantsImages()" id="plantsImgBtn">plants</a>
+        <a class="rocks-img-btn" onclick="loadRocksImages()" id="rocksImgBtn">rocks</a>
+      </div>
+
+      <div class="header-link-container-mobile">
+        <div class="burger-menu" id="burgerMenu">
+          <span></span>
+          <span></span>
+        </div>
+        <div class="mobile-links-container" id="mobileLinks">
+          <div class="burger-menu burger-menu-open" id="">
+            <div>&#10005;</div>
+          </div>
+          <a class="animal-img-btn active-link" onclick="loadAnimalImages()" id="animalImgBtn">animals</a>
+          <a class="plants-img-btn" onclick="loadPlantsImages()" id="plantsImgBtn">plants</a>
+          <a class="rocks-img-btn" onclick="loadRocksImages()" id="rocksImgBtn">rocks</a>
+        </div>
       </div>
     </header>
+
     <div class="full-size-img-container d-none" id="fullSizeImgContainer"></div>
-    <div
-      class="slide-show-img-container d-none"
-      id="slideShowImgContainer"
-      onclick="stopSlideShow()"></div>
+    <div class="slide-show-img-container d-none" id="slideShowImgContainer"></div>
     <div class="img-container" id="imgContainer"></div>
     <script src="gallery.js"></script>
   </body>
