@@ -18,7 +18,7 @@ header {
     margin: 0;
     padding-left: 3vw;
     font-size: 3rem;
-    background-image: url("./src/img/img10.jpg");
+    background-image: url("./src/img/animals/animal10.jpg");
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgba(255, 255, 255, 0.384);
     background-size: 50%;
@@ -32,13 +32,13 @@ header {
 
     a {
       transition: all 100ms ease-in;
-      background-image: url("./src/img/img9.jpg");
+      background-image: url("./src/img/animals/animal9.jpg");
       -webkit-background-clip: text;
-      -webkit-text-fill-color: rgba(255, 255, 255, 0.384);
+      -webkit-text-fill-color: rgba(255, 255, 255, 0.753);
       background-size: 50%;
       &:hover {
-        transform: scale(97%);
-        background-image: url("./src/img/img9.jpg");
+        transform: scale(99%);
+        background-image: url("./src/img/animals/animal9.jpg");
         -webkit-background-clip: text;
         -webkit-text-fill-color: rgba(255, 255, 255, 0.514);
         background-size: 50%;
@@ -47,11 +47,15 @@ header {
     }
     .active-link {
       border: 2px solid rgba(255, 255, 255, 0.322);
-      padding: 0.5rem;
-      margin: -0.5rem;
+      padding: 8px;
+      margin: -10px;
+      background-image: url("./src/img/animals/animal9.jpg");
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: rgba(255, 255, 255, 0.384);
+      background-size: 50%;
       &:hover {
         transform: scale(100%);
-        background-image: url("./src/img/img9.jpg");
+        background-image: url("./src/img/animals/animal9.jpg");
         -webkit-background-clip: text;
         -webkit-text-fill-color: rgba(255, 255, 255, 0.384);
         background-size: 50%;
