@@ -10,9 +10,18 @@
     <header>
       <h1>images.</h1>
       <div class="header-link-container">
-        <a class="animal-img-btn active-link" id="animalImgBtn">animals</a>
-        <a class="plants-img-btn" id="plantsImgBtn">plants</a>
-        <a class="rocks-img-btn" id="rocksImgBtn">rocks</a>
+        <a
+          class="animal-img-btn active-link"
+          onclick="loadAnimalImages()"
+          id="animalImgBtn"
+          >animals</a
+        >
+        <a class="plants-img-btn" onclick="loadPlantsImages()" id="plantsImgBtn"
+          >plants</a
+        >
+        <a class="rocks-img-btn" onclick="loadRocksImages()" id="rocksImgBtn"
+          >rocks</a
+        >
       </div>
     </header>
     <div class="full-size-img-container d-none" id="fullSizeImgContainer"></div>

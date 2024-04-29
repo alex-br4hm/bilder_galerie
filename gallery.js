@@ -7,22 +7,65 @@ const rocksImgBtn = document.getElementById("rocksImgBtn");
 
 let animalImages = [];
 let plantsImages = [];
-let stoneImages = [];
+let rocksImages = [];
 buildAnimalImagesArray();
+buildPlantsImagesArray();
+buildRocksImagesArray();
 
 function buildAnimalImagesArray() {
   for (let i = 0; i < 21; i++) {
     animalImages.push(`./src/img/animals/animal${i}.jpg`);
   }
-  loadImages();
+  loadImages(animalImages);
 }
 
-function loadImages() {
-  for (let i = 0; i < animalImages.length; i++) {
+function buildPlantsImagesArray() {
+  for (let i = 0; i < 21; i++) {
+    plantsImages.push(`./src/img/plants/plant${i}.jpg`);
+  }
+}
+
+function buildRocksImagesArray() {
+  for (let i = 0; i < 21; i++) {
+    rocksImages.push(`./src/img/rocks/rock${i}.jpg`);
+  }
+}
+
+// ------- //
+
+function loadImages(arr) {
+  for (let i = 0; i < arr.length; i++) {
     imgContainer.innerHTML += `
-        <img loading="lazy" onclick="openFullSizeImg(${i})"src="${animalImages[i]}" alt="Image from a animal" id="img${i}" />
+        <img loading="lazy" onclick="openFullSizeImg(${i})"src="${arr[i]}" alt="Image from a animal" id="img${i}" />
         `;
   }
+}
+
+function loadAnimalImages() {
+  animalImgBtn.classList.add("active-link");
+  plantsImgBtn.classList.remove("active-link");
+  rocksImgBtn.classList.remove("active-link");
+
+  imgContainer.innerHTML = "";
+  loadImages(animalImages);
+}
+
+function loadPlantsImages() {
+  animalImgBtn.classList.remove("active-link");
+  plantsImgBtn.classList.add("active-link");
+  rocksImgBtn.classList.remove("active-link");
+
+  imgContainer.innerHTML = "";
+  loadImages(plantsImages);
+}
+
+function loadRocksImages() {
+  animalImgBtn.classList.remove("active-link");
+  plantsImgBtn.classList.remove("active-link");
+  rocksImgBtn.classList.add("active-link");
+
+  imgContainer.innerHTML = "";
+  loadImages(rocksImages);
 }
 
 function openFullSizeImg(i) {
