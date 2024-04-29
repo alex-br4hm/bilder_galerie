@@ -37,7 +37,7 @@ function buildRocksImagesArray() {
 function loadImages() {
   for (let i = 0; i < imageArray.length; i++) {
     imgContainer.innerHTML += `
-        <img loading="lazy" onclick="openFullSizeImg(${i})"src="${imageArray[i]}" alt="Image from a animal" id="img${i}" />
+        <img loading="lazy" onclick="openFullSizeImg(${i})"src="${imageArray[i]}" alt="Image of something" id="img${i}" />
         `;
   }
 }
@@ -77,15 +77,12 @@ function loadRocksImages() {
 function openFullSizeImg(i) {
   fullSizeImgContainer.classList.remove("d-none");
   if (animalImgBtn.classList.contains("active-link")) {
-    buildAnimalImagesArray();
     openFullSizeImgHTML(i);
   }
   if (plantsImgBtn.classList.contains("active-link")) {
-    buildPlantsImagesArray();
     openFullSizeImgHTML(i);
   }
   if (rocksImgBtn.classList.contains("active-link")) {
-    buildRocksImagesArray();
     openFullSizeImgHTML(i);
   }
 }
@@ -113,10 +110,10 @@ function fullSizeImgToLeft(i) {
 }
 
 // --- Slideshow --- //
+
 let slideshowTimeout;
 
 function startSlideShow(i) {
-  stopSlideShow(i);
   slideShowImgContainer.classList.remove("d-none");
   fullSizeImgContainer.classList.add("d-none");
   slideShowRunning(i);
@@ -125,8 +122,9 @@ function startSlideShow(i) {
 function slideShowRunning(i) {
   if (i < imageArray.length) {
     slideShowImgContainer.innerHTML = `
-      <img onclick="stopSlideShow(${i})" src="${imageArray[i]}" alt="" />
+      <img onclick="stopSlideShow(${i})" src="${imageArray[i]}" alt="Image of something" />
     `;
+
     slideshowTimeout = setTimeout(() => {
       i++;
       slideShowRunning(i);
@@ -138,15 +136,10 @@ function slideShowRunning(i) {
 }
 
 function stopSlideShow(i) {
-  if (slideshowTimeout) {
-    clearTimeout(slideshowTimeout);
-  }
-
-  slideShowImgContainer.innerHTML = "";
+  clearTimeout(slideshowTimeout);
+  openFullSizeImg(i);
   slideShowImgContainer.classList.add("d-none");
   fullSizeImgContainer.classList.remove("d-none");
-
-  openFullSizeImg(i);
 }
 // +++ HTML +++ //
 
@@ -155,7 +148,9 @@ function openFullSizeImgHTML(i) {
         <div class="full-size-btn-container" id="fullSizeBtnContainer">
             <div class="x-btn btn-hover" onclick="closeFullSizeImg()">&times;</div>
               <div onclick="fullSizeImgToLeft(${i - 1})" class="arrow left-arrow btn-hover">&laquo;</div>
-              <div onclick="fullSizeImgToRight(${i + 1})" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
+              <div onclick="fullSizeImgToRight(${
+                i + 1
+              })" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
               <div onclick="startSlideShow(${i})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
         </div>
             <img onclick="closeFullSizeImg()" src="${imageArray[i]}" alt="" />
