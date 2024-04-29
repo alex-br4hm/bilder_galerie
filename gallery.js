@@ -5,38 +5,37 @@ const animalImgBtn = document.getElementById("animalImgBtn");
 const plantsImgBtn = document.getElementById("plantsImgBtn");
 const rocksImgBtn = document.getElementById("rocksImgBtn");
 
-let animalImages = [];
-let plantsImages = [];
-let rocksImages = [];
+let imageArray = [];
 buildAnimalImagesArray();
-buildPlantsImagesArray();
-buildRocksImagesArray();
 
 function buildAnimalImagesArray() {
+  imageArray = [];
   for (let i = 0; i < 21; i++) {
-    animalImages.push(`./src/img/animals/animal${i}.jpg`);
+    imageArray.push(`./src/img/animals/animal${i}.jpg`);
   }
-  loadImages(animalImages);
+  loadImages();
 }
 
 function buildPlantsImagesArray() {
+  imageArray = [];
   for (let i = 0; i < 21; i++) {
-    plantsImages.push(`./src/img/plants/plant${i}.jpg`);
+    imageArray.push(`./src/img/plants/plant${i}.jpg`);
   }
 }
 
 function buildRocksImagesArray() {
+  imageArray = [];
   for (let i = 0; i < 21; i++) {
-    rocksImages.push(`./src/img/rocks/rock${i}.jpg`);
+    imageArray.push(`./src/img/rocks/rock${i}.jpg`);
   }
 }
 
 // ------- //
 
-function loadImages(arr) {
-  for (let i = 0; i < arr.length; i++) {
+function loadImages() {
+  for (let i = 0; i < imageArray.length; i++) {
     imgContainer.innerHTML += `
-        <img loading="lazy" onclick="openFullSizeImg(${i})"src="${arr[i]}" alt="Image from a animal" id="img${i}" />
+        <img loading="lazy" onclick="openFullSizeImg(${i})"src="${imageArray[i]}" alt="Image from a animal" id="img${i}" />
         `;
   }
 }
@@ -47,7 +46,8 @@ function loadAnimalImages() {
   rocksImgBtn.classList.remove("active-link");
 
   imgContainer.innerHTML = "";
-  loadImages(animalImages);
+  buildAnimalImagesArray();
+  loadImages();
 }
 
 function loadPlantsImages() {
@@ -56,7 +56,8 @@ function loadPlantsImages() {
   rocksImgBtn.classList.remove("active-link");
 
   imgContainer.innerHTML = "";
-  loadImages(plantsImages);
+  buildPlantsImagesArray();
+  loadImages();
 }
 
 function loadRocksImages() {
@@ -65,21 +66,25 @@ function loadRocksImages() {
   rocksImgBtn.classList.add("active-link");
 
   imgContainer.innerHTML = "";
-  loadImages(rocksImages);
+  buildRocksImagesArray();
+  loadImages();
 }
 
 // ------ //
 
 function openFullSizeImg(i) {
   fullSizeImgContainer.classList.remove("d-none");
+  if (animalImgBtn.classList.contains("active-link")) {
+    buildAnimalImagesArray();
+    openFullSizeImgHTML(i);
+  }
   if (plantsImgBtn.classList.contains("active-link")) {
-    openFullSizeImgHTML(i, plantsImages);
+    buildPlantsImagesArray();
+    openFullSizeImgHTML(i);
   }
   if (rocksImgBtn.classList.contains("active-link")) {
-    openFullSizeImgHTML(i, rocksImages);
-  }
-  if (animalImgBtn.classList.contains("active-link")) {
-    openFullSizeImgHTML(i, animalImages);
+    buildRocksImagesArray();
+    openFullSizeImgHTML(i);
   }
 }
 
@@ -100,77 +105,75 @@ function fullSizeImgToLeft(i) {
   if (i > -1) {
     fullSizeImgToLeftHTML(i);
   } else {
-    i = animalImages.length - 1;
+    i = imageArray.length - 1;
     fullSizeImgToRight(i);
   }
 }
 
-function startSlideShow(i) {
-  slideShowImgContainer.classList.remove("d-none");
-  fullSizeImgContainer.classList.add("d-none");
-  slideShowRunning(i);
-}
+// function startSlideShow(i) {
+//   slideShowImgContainer.classList.remove("d-none");
+//   fullSizeImgContainer.classList.add("d-none");
+//   slideShowRunning(i);
+// }
 
-function slideShowRunning(i) {
-  if (i < animalImages.length) {
-    slideShowImgContainer.innerHTML = `
-      <img onclick="stopSlideShow(${i})" src="${animalImages[i]}" alt="" /> 
-    `;
-    setTimeout(() => {
-      slideShowRunning(i + 1);
-    }, 3000);
-  }
-}
+// function slideShowRunning(i) {
+//   if (i < animalImages.length) {
+//     slideShowImgContainer.innerHTML = `
+//       <img onclick="stopSlideShow(${i})" src="${animalImages[i]}" alt="" />
+//     `;
+//     setTimeout(() => {
+//       slideShowRunning(i + 1);
+//     }, 3000);
+//   }
+// }
 
-function stopSlideShow(i) {
-  slideShowImgContainer.classList.add("d-none");
-  fullSizeImgContainer.classList.remove("d-none");
-  if (i) {
-    openFullSizeImgHTML(i);
-  } else {
-    imgContainer.innerHTML = "";
-    loadImages();
-  }
-}
+// function stopSlideShow(i) {
+//   slideShowImgContainer.classList.add("d-none");
+//   fullSizeImgContainer.classList.remove("d-none");
+//   if (i) {
+//     openFullSizeImgHTML(i);
+//   } else {
+//     imgContainer.innerHTML = "";
+//     loadImages();
+//   }
+// }
 // +++ HTML +++ //
 
-function openFullSizeImgHTML(i, arr) {
-  console.table(arr);
+function openFullSizeImgHTML(i) {
   fullSizeImgContainer.innerHTML = `
         <div class="full-size-btn-container" id="fullSizeBtnContainer">
             <div class="x-btn btn-hover" onclick="closeFullSizeImg()">&times;</div>
-              <div onclick="fullSizeImgToLeft(${i - 1}, ${arr})" class="arrow left-arrow btn-hover">&laquo;</div>
-              <div onclick="fullSizeImgToRight(${i + 1}, ${arr})" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
-              <div onclick="startSlideShow(${i}, ${arr})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
+              <div onclick="fullSizeImgToLeft(${i - 1})" class="arrow left-arrow btn-hover">&laquo;</div>
+              <div onclick="fullSizeImgToRight(${i + 1})" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
+              <div onclick="startSlideShow(${i})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
         </div>
-            <img onclick="closeFullSizeImg()" src="${arr[i]}" alt="" />
+            <img onclick="closeFullSizeImg()" src="${imageArray[i]}" alt="" />
   `;
   return;
 }
 
-function fullSizeImgToRightHTML(i, arr) {
-  console.table(arr);
+function fullSizeImgToRightHTML(i) {
   fullSizeImgContainer.innerHTML = /*html*/ `
     <div class="full-size-btn-container" id="fullSizeBtnContainer">
         <div class="x-btn btn-hover" onclick="closeFullSizeImg()">&times;</div>
-          <div onclick="fullSizeImgToLeft(${i - 1}, ${arr})"class="arrow left-arrow btn-hover">&laquo;</div>
-          <div onclick="fullSizeImgToRight(${i - 1}, ${arr})" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
-          <div onclick="startSlideShow(${i - 1}, ${arr})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
+          <div onclick="fullSizeImgToLeft(${i - 1})"class="arrow left-arrow btn-hover">&laquo;</div>
+          <div onclick="fullSizeImgToRight(${i + 1})" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
+          <div onclick="startSlideShow(${i - 1})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
     </div>
-        <img onclick="closeFullSizeImg()" src="${arr[i]}" alt="" />
+        <img onclick="closeFullSizeImg()" src="${imageArray[i]}" alt="" />
 `;
   return;
 }
 
-function fullSizeImgToLeftHTML(i, arr) {
+function fullSizeImgToLeftHTML(i) {
   fullSizeImgContainer.innerHTML = /*html*/ `
     <div class="full-size-btn-container" id="fullSizeBtnContainer">
       <div class="x-btn btn-hover" onclick="closeFullSizeImg()">&times;</div>
-          <div onclick="fullSizeImgToLeft(${i - 1}, ${arr})" class="arrow left-arrow btn-hover">&laquo;</div>
-          <div onclick="fullSizeImgToRight(${i - 1}, ${arr})" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
-          <div onclick="startSlideShow(${i - 1}, ${arr})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
+          <div onclick="fullSizeImgToLeft(${i - 1})" class="arrow left-arrow btn-hover">&laquo;</div>
+          <div onclick="fullSizeImgToRight(${i + 1})" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
+          <div onclick="startSlideShow(${i - 1})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
     </div>
-          <img onclick="closeFullSizeImg()" src="${arr[i]}" alt="" />
+          <img onclick="closeFullSizeImg()" src="${imageArray[i]}" alt="" />
           `;
   return;
 }
