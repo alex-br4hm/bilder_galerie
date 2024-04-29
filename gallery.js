@@ -8,6 +8,8 @@ const rocksImgBtn = document.getElementById("rocksImgBtn");
 let imageArray = [];
 buildAnimalImagesArray();
 
+// build the array for the category
+
 function buildAnimalImagesArray() {
   imageArray = [];
   for (let i = 0; i < 21; i++) {
@@ -70,7 +72,7 @@ function loadRocksImages() {
   loadImages();
 }
 
-// ------ //
+// ------- //
 
 function openFullSizeImg(i) {
   fullSizeImgContainer.classList.remove("d-none");
@@ -110,33 +112,42 @@ function fullSizeImgToLeft(i) {
   }
 }
 
-// function startSlideShow(i) {
-//   slideShowImgContainer.classList.remove("d-none");
-//   fullSizeImgContainer.classList.add("d-none");
-//   slideShowRunning(i);
-// }
+// --- Slideshow --- //
+let slideshowTimeout;
 
-// function slideShowRunning(i) {
-//   if (i < animalImages.length) {
-//     slideShowImgContainer.innerHTML = `
-//       <img onclick="stopSlideShow(${i})" src="${animalImages[i]}" alt="" />
-//     `;
-//     setTimeout(() => {
-//       slideShowRunning(i + 1);
-//     }, 3000);
-//   }
-// }
+function startSlideShow(i) {
+  stopSlideShow(i);
+  slideShowImgContainer.classList.remove("d-none");
+  fullSizeImgContainer.classList.add("d-none");
+  slideShowRunning(i);
+}
 
-// function stopSlideShow(i) {
-//   slideShowImgContainer.classList.add("d-none");
-//   fullSizeImgContainer.classList.remove("d-none");
-//   if (i) {
-//     openFullSizeImgHTML(i);
-//   } else {
-//     imgContainer.innerHTML = "";
-//     loadImages();
-//   }
-// }
+function slideShowRunning(i) {
+  if (i < imageArray.length) {
+    slideShowImgContainer.innerHTML = `
+      <img onclick="stopSlideShow(${i})" src="${imageArray[i]}" alt="" />
+    `;
+    slideshowTimeout = setTimeout(() => {
+      i++;
+      slideShowRunning(i);
+    }, 3000);
+  } else {
+    i = 0;
+    slideShowRunning(i);
+  }
+}
+
+function stopSlideShow(i) {
+  if (slideshowTimeout) {
+    clearTimeout(slideshowTimeout);
+  }
+
+  slideShowImgContainer.innerHTML = "";
+  slideShowImgContainer.classList.add("d-none");
+  fullSizeImgContainer.classList.remove("d-none");
+
+  openFullSizeImg(i);
+}
 // +++ HTML +++ //
 
 function openFullSizeImgHTML(i) {
@@ -158,7 +169,7 @@ function fullSizeImgToRightHTML(i) {
         <div class="x-btn btn-hover" onclick="closeFullSizeImg()">&times;</div>
           <div onclick="fullSizeImgToLeft(${i - 1})"class="arrow left-arrow btn-hover">&laquo;</div>
           <div onclick="fullSizeImgToRight(${i + 1})" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
-          <div onclick="startSlideShow(${i - 1})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
+          <div onclick="startSlideShow(${i})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
     </div>
         <img onclick="closeFullSizeImg()" src="${imageArray[i]}" alt="" />
 `;
@@ -171,7 +182,7 @@ function fullSizeImgToLeftHTML(i) {
       <div class="x-btn btn-hover" onclick="closeFullSizeImg()">&times;</div>
           <div onclick="fullSizeImgToLeft(${i - 1})" class="arrow left-arrow btn-hover">&laquo;</div>
           <div onclick="fullSizeImgToRight(${i + 1})" class="arrow right-arrow btn-hover" id="rightArrow">&raquo;</div>
-          <div onclick="startSlideShow(${i - 1})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
+          <div onclick="startSlideShow(${i})" class="play-btn" id="slideshowPlayBtn">&blacktriangleright;</div>
     </div>
           <img onclick="closeFullSizeImg()" src="${imageArray[i]}" alt="" />
           `;
