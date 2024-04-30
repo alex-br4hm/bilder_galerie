@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>📷 images 📷</title>
+    <title>images</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -16,17 +16,19 @@
       </div>
 
       <div class="header-link-container-mobile">
-        <div class="burger-menu" id="burgerMenu">
-          <span></span>
-          <span></span>
-        </div>
-        <div class="mobile-links-container" id="mobileLinks">
-          <div class="burger-menu burger-menu-open" id="">
-            <div>&#10005;</div>
+        <div class="burger-menu" id="burgerMenu" onclick="toggleMobileNav()">
+          <div class="burger-menu-lines">
+            <span></span>
+            <span></span>
           </div>
-          <a class="animal-img-btn active-link" onclick="loadAnimalImages()" id="animalImgBtn">animals</a>
-          <a class="plants-img-btn" onclick="loadPlantsImages()" id="plantsImgBtn">plants</a>
-          <a class="rocks-img-btn" onclick="loadRocksImages()" id="rocksImgBtn">rocks</a>
+        </div>
+        <div class="close-mobile-nav-dropdown d-none" id="closeMobileNav" onclick="toggleMobileNav()">&#10005;</div>
+        <div class="mobile-links-container d-none" id="mobileLinks">
+          <a class="animal-img-btn active-link" onclick="loadAnimalImages(),toggleMobileNav()" id="animalImgBtnMobile"
+            >animals</a
+          >
+          <a class="plants-img-btn" onclick="loadPlantsImages(), toggleMobileNav()" id="plantsImgBtnMobile">plants</a>
+          <a class="rocks-img-btn" onclick="loadRocksImages(), toggleMobileNav()" id="rocksImgBtnMobile">rocks</a>
         </div>
       </div>
     </header>
