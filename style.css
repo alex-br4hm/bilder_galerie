@@ -9,7 +9,9 @@ body {
   color: antiquewhite;
   font-family: sans-serif;
 }
-
+.header-link-container-mobile {
+  display: none;
+}
 header {
   display: flex;
   align-items: center;
@@ -105,6 +107,7 @@ header {
     width: 50vw;
     height: 100%;
     object-fit: cover;
+
     z-index: 1001;
     user-select: none;
   }
@@ -135,12 +138,12 @@ header {
 
   .left-arrow {
     bottom: 50%;
-    left: 10%;
+    left: 3%;
   }
 
   .right-arrow {
     bottom: 50%;
-    right: 10%;
+    right: 3%;
   }
 
   .btn-hover {
@@ -189,16 +192,82 @@ header {
   }
 }
 
+@media (max-width: 1240px) {
+  .full-size-img-container {
+    img {
+      width: 100%;
+      height: 80%;
+    }
+  }
+
+  .full-size-btn-container {
+    .x-btn {
+      font-size: 7rem;
+      left: 5%;
+      top: -1.5%;
+    }
+
+    .left-arrow {
+      bottom: -1%;
+      left: 30%;
+    }
+
+    .right-arrow {
+      bottom: -1%;
+      right: 30%;
+    }
+
+    .play-btn {
+      font-size: 8rem;
+      top: -3%;
+      left: unset;
+      right: 5%;
+    }
+  }
+
+  .slide-show-img-container {
+    img {
+      width: 100%;
+      height: 90vh;
+    }
+  }
+}
+
 @media (max-width: 630px) {
+  .header-link-container-mobile {
+    display: inline;
+  }
   .burger-menu {
     display: flex;
     gap: 8px;
     flex-direction: column;
     margin-right: 2rem;
-    span {
-      width: 40px;
-      height: 5px;
-      background-color: whitesmoke;
+    transition: all 100ms ease-in;
+    .burger-menu-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      user-select: none;
+      &:hover {
+        color: white;
+        cursor: pointer;
+        gap: 10px;
+      }
+      span {
+        width: 40px;
+        height: 5px;
+        background-color: whitesmoke;
+      }
+    }
+  }
+
+  .close-mobile-nav-dropdown {
+    font-size: 4rem;
+    user-select: none;
+    margin-right: 2rem;
+    &:hover {
+      color: white;
+      cursor: pointer;
     }
   }
 
@@ -214,14 +283,17 @@ header {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 10%;
+    top: 13%;
     left: 0;
     right: 0;
     bottom: 0;
 
-    .burger-menu-open {
-      margin: 0;
-      span {
+    a {
+      text-decoration: underline;
+      user-select: none;
+      &:hover {
+        color: white;
+        cursor: pointer;
       }
     }
   }
@@ -237,8 +309,17 @@ header {
       display: none;
     }
   }
+
+  .full-size-btn-container {
+    .left-arrow {
+      left: 15%;
+    }
+    .right-arrow {
+      right: 15%;
+    }
+  }
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
