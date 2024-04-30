@@ -6,7 +6,9 @@ const plantsImgBtn = document.getElementById("plantsImgBtn");
 const rocksImgBtn = document.getElementById("rocksImgBtn");
 
 let imageArray = [];
+
 buildAnimalImagesArray();
+loadImages();
 
 // build the array for the category
 
@@ -15,7 +17,6 @@ function buildAnimalImagesArray() {
   for (let i = 0; i < 21; i++) {
     imageArray.push(`./src/img/animals/animal${i}.jpg`);
   }
-  loadImages();
 }
 
 function buildPlantsImagesArray() {
@@ -141,6 +142,18 @@ function stopSlideShow(i) {
   slideShowImgContainer.classList.add("d-none");
   fullSizeImgContainer.classList.remove("d-none");
 }
+
+// +++ Mobile-Nav +++ //
+
+function toggleMobileNav() {
+  let burgerMenu = document.getElementById("burgerMenu");
+  let closeMenuCross = document.getElementById("closeMobileNav");
+  let mobileLinks = document.getElementById("mobileLinks");
+  burgerMenu.classList.toggle("d-none");
+  closeMenuCross.classList.toggle("d-none");
+  mobileLinks.classList.toggle("d-none");
+}
+
 // +++ HTML +++ //
 
 function openFullSizeImgHTML(i) {
