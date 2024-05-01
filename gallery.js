@@ -123,6 +123,7 @@ function startSlideShow(i) {
 function slideShowRunning(i) {
   if (i < imageArray.length) {
     slideShowImgContainer.innerHTML = `
+    <div onclick="stopSlideShow(${i})" class="stop-btn" id="slideshowStopBtn">&#9632;</div>
       <img onclick="stopSlideShow(${i})" src="${imageArray[i]}" alt="Image of something" />
     `;
 
