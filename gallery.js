@@ -7,30 +7,16 @@ const rocksImgBtn = document.getElementById("rocksImgBtn");
 
 let imageArray = [];
 
-buildAnimalImagesArray();
-loadImages();
+buildActualCategoryArray("animals/animal");
 
 // build the array for the category
 
-function buildAnimalImagesArray() {
+function buildActualCategoryArray(categoryLink) {
   imageArray = [];
   for (let i = 0; i < 21; i++) {
-    imageArray.push(`./src/img/animals/animal${i}.jpg`);
+    imageArray.push(`./src/img/${categoryLink + i}.jpg`);
   }
-}
-
-function buildPlantsImagesArray() {
-  imageArray = [];
-  for (let i = 0; i < 21; i++) {
-    imageArray.push(`./src/img/plants/plant${i}.jpg`);
-  }
-}
-
-function buildRocksImagesArray() {
-  imageArray = [];
-  for (let i = 0; i < 21; i++) {
-    imageArray.push(`./src/img/rocks/rock${i}.jpg`);
-  }
+  loadImages();
 }
 
 // ------- //
@@ -43,34 +29,31 @@ function loadImages() {
   }
 }
 
-function loadAnimalImages() {
+function loadAnimalImages(categoryLink) {
   animalImgBtn.classList.add("active-link");
   plantsImgBtn.classList.remove("active-link");
   rocksImgBtn.classList.remove("active-link");
 
   imgContainer.innerHTML = "";
-  buildAnimalImagesArray();
-  loadImages();
+  buildActualCategoryArray(categoryLink);
 }
 
-function loadPlantsImages() {
+function loadPlantsImages(categoryLink) {
   animalImgBtn.classList.remove("active-link");
   plantsImgBtn.classList.add("active-link");
   rocksImgBtn.classList.remove("active-link");
 
   imgContainer.innerHTML = "";
-  buildPlantsImagesArray();
-  loadImages();
+  buildActualCategoryArray(categoryLink);
 }
 
-function loadRocksImages() {
+function loadRocksImages(categoryLink) {
   animalImgBtn.classList.remove("active-link");
   plantsImgBtn.classList.remove("active-link");
   rocksImgBtn.classList.add("active-link");
 
   imgContainer.innerHTML = "";
-  buildRocksImagesArray();
-  loadImages();
+  buildActualCategoryArray(categoryLink);
 }
 
 // ------- //
