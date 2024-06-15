@@ -1,49 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>images</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="./src/img/fav.png" type="image/x-icon" />
-  </head>
-  <body>
-    <header>
-      <h1>images.</h1>
-      <div class="header-link-container">
-        <a class="animal-img-btn active-link" onclick="loadAnimalImages('animals/animal')" id="animalImgBtn">animals</a>
-        <a class="plants-img-btn" onclick="loadPlantsImages('plants/plant')" id="plantsImgBtn">plants</a>
-        <a class="rocks-img-btn" onclick="loadRocksImages('rocks/rock')" id="rocksImgBtn">rocks</a>
-      </div>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>images</title>
+      <link rel="stylesheet" href="style.css" />
+      <link rel="shortcut icon" href="./src/img/fav.png" type="image/x-icon" />
+   </head>
+   <body>
+      <header>
+         <h1>images.</h1>
+         <div class="header-link-container">
+            <a class="animal-img-btn active-link" onclick="loadAnimalImages('animals/animal')" id="animalImgBtn"
+               >animals</a
+            >
+            <a class="plants-img-btn" onclick="loadPlantsImages('plants/plant')" id="plantsImgBtn">plants</a>
+            <a class="rocks-img-btn" onclick="loadRocksImages('rocks/rock')" id="rocksImgBtn">rocks</a>
+         </div>
 
-      <div class="header-link-container-mobile">
-        <div class="burger-menu" id="burgerMenu" onclick="toggleMobileNav()">
-          <div class="burger-menu-lines">
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-        <div class="close-mobile-nav-dropdown d-none" id="closeMobileNav" onclick="toggleMobileNav()">&#10005;</div>
-        <div class="mobile-links-container d-none" id="mobileLinks">
-          <a
-            class="animal-img-btn active-link"
-            onclick="loadAnimalImages('animals/animal'),toggleMobileNav()"
-            id="animalImgBtnMobile"
-            >animals</a
-          >
-          <a class="plants-img-btn" onclick="loadPlantsImages('plants/plant'),toggleMobileNav()" id="plantsImgBtnMobile"
-            >plants</a
-          >
-          <a class="rocks-img-btn" onclick="loadRocksImages('rocks/rock'), toggleMobileNav()" id="rocksImgBtnMobile"
-            >rocks</a
-          >
-        </div>
-      </div>
-    </header>
+         <div class="header-link-container-mobile">
+            <div class="burger-menu" id="burgerMenu" onclick="toggleMobileNav()">
+               <div class="burger-menu-lines">
+                  <span></span>
+                  <span></span>
+               </div>
+            </div>
+            <div class="close-mobile-nav-dropdown d-none" id="closeMobileNav" onclick="toggleMobileNav()">&#10005;</div>
+            <div class="mobile-links-container d-none" id="mobileLinks">
+               <a
+                  class="animal-img-btn active-link"
+                  onclick="loadAnimalImages('animals/animal'),toggleMobileNav()"
+                  id="animalImgBtnMobile"
+                  >animals</a
+               >
+               <a
+                  class="plants-img-btn"
+                  onclick="loadPlantsImages('plants/plant'),toggleMobileNav()"
+                  id="plantsImgBtnMobile"
+                  >plants</a
+               >
+               <a
+                  class="rocks-img-btn"
+                  onclick="loadRocksImages('rocks/rock'), toggleMobileNav()"
+                  id="rocksImgBtnMobile"
+                  >rocks</a
+               >
+            </div>
+         </div>
+      </header>
 
-    <div class="full-size-img-container d-none" id="fullSizeImgContainer"></div>
-    <div class="slide-show-img-container d-none" id="slideShowImgContainer"></div>
-    <div class="img-container" id="imgContainer"></div>
-    <script src="gallery.js"></script>
-  </body>
+      <div class="full-size-img-container d-none" id="fullSizeImgContainer"></div>
+      <div class="slide-show-img-container d-none" id="slideShowImgContainer"></div>
+      <div class="img-container" id="imgContainer"></div>
+
+      <footer>
+         <b><p>&copy; 2024 Alexander Haehnlein</p></b>
+         <a href="impressum.html">Impressum</a>
+      </footer>
+      <script src="gallery.js"></script>
+   </body>
 </html>

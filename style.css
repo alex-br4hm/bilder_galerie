@@ -72,7 +72,7 @@ header {
 
 .img-container {
    margin: 1rem 3vw 0 3vw;
-   padding-bottom: 3rem;
+   padding-bottom: 1rem;
    display: flex;
    flex-wrap: wrap;
    gap: 0.8rem;
@@ -206,6 +206,21 @@ header {
       object-fit: cover;
       z-index: 1001;
       user-select: none;
+   }
+}
+
+footer {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin: 0 5vw;
+   a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: all 150ms ease-in;
+      &:hover {
+         color: rgba(255, 255, 255, 0.8);
+      }
    }
 }
 
